@@ -613,7 +613,7 @@ export default function DecentralizedDerivatives() {
                       <div className="mt-5 overflow-hidden rounded-xl border border-(--border) bg-black/20">
                         <video
                           className="h-auto w-full"
-                          src="/video/decentralized-desk.mp4"
+                          src="https://media.kevinpkoch.com/videos/decentralized-desk.mp4"
                           controls
                           playsInline
                           preload="metadata"
@@ -630,7 +630,7 @@ export default function DecentralizedDerivatives() {
                       <div className="mt-5 overflow-hidden rounded-xl border border-(--border) bg-black/20">
                         <video
                           className="h-auto w-full"
-                          src="/video/decentralized-mobile.mp4"
+                          src="https://media.kevinpkoch.com/videos/decentralized-mobile.mp4"
                           controls
                           playsInline
                           preload="metadata"
@@ -639,6 +639,7 @@ export default function DecentralizedDerivatives() {
                       </div>
                     </div>
                   </div>
+
                 </Section>
 
                 <Section id="impact" eyebrow="Results" title="What shipped and what improved">

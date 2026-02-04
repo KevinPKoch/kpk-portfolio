@@ -189,10 +189,11 @@ export default function ImprintPage() {
     data.set('took_ms', String(Date.now() - formStartedAt));
 
     try {
-      const res = await fetch('/send.php', {
-        method: 'POST',
-        body: data, // multipart/form-data - PHP friendly
-      });
+      const res = await fetch('/api/contact', {
+      method: 'POST',
+      body: data,
+    });
+
 
       const json = await res.json().catch(() => null);
 
