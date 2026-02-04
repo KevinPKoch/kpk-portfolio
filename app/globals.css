@@ -1,0 +1,382 @@
+@import "tailwindcss";
+@import "./theme/light.css";
+@import "./theme/dark.css";
+
+/* ----------------------------------------------------------------------------
+  Base
+---------------------------------------------------------------------------- */
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* Respect user preference in reduced motion media query below */
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+}
+
+/* Prevent default browser-blue links when a class is missing */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Visible focus (WCAG 2.1 – 2.4.7 Focus Visible) */
+a:focus-visible,
+button:focus-visible,
+[role='button']:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ring);
+}
+
+/* Skip link (WCAG 2.1 – 2.4.1 Bypass Blocks) */
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  z-index: 1000;
+  padding: 0.6rem 0.9rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-strong);
+  transform: translateY(-200%);
+  transition: transform 160ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+a:hover {
+  color: var(--text-strong);
+}
+
+body {
+  background: var(--page-bg, var(--bg));
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji",
+    "Segoe UI Emoji";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+/* Motion accessibility (WCAG 2.1 – 2.3.3 Animation from Interactions) */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+  Canvas + subtle 12-column grid (vertical column lines only)
+
+  Spec (desktop canvas):
+    - 1232px frame
+    - 32px margin
+    - 24px gutter
+
+  Responsive:
+    - xs: 4 columns
+    - sm: 8 columns
+    - lg+: 12 columns
+---------------------------------------------------------------------------- */
+
+:root {
+  /* Page background outside canvas */
+  --page-bg: #f3f4f6;
+  /* Sticky header backdrop */
+  --header-bg: rgba(255, 255, 255, 0.72);
+
+  /* Canvas sizing */
+  --canvas-max: 1232px;
+
+  /* Grid config */
+  --grid-cols: 4;
+  --grid-margin: 16px;
+  --grid-gutter: 16px;
+
+  /* Grid line colors (light mode) */
+  --grid-line-edge: var(--grid-line);
+  --grid-right-edge: var(--grid-line-edge);
+
+  /* Derived sizes (kept for reference) */
+  --grid-col: calc(
+    (100% - (2 * var(--grid-margin)) - ((var(--grid-cols) - 1) * var(--grid-gutter))) / var(--grid-cols)
+  );
+  --grid-step: calc(var(--grid-col) + var(--grid-gutter));
+}
+
+@media (min-width: 640px) {
+  :root {
+    --grid-cols: 8;
+    --grid-margin: 24px;
+    --grid-gutter: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --grid-cols: 12;
+    --grid-margin: 32px;
+    --grid-gutter: 24px;
+  }
+}
+
+html.dark {
+  --page-bg: #0b0b0c;
+  --header-bg: rgba(10, 10, 11, 0.72);
+  --grid-line-edge: var(--grid-line);
+  --grid-right-edge: var(--grid-line-edge);
+}
+
+/* Page wrapper (outside canvas). Keep this at 0 to avoid "double gutters". */
+.kpk-page {
+  min-height: 100%;
+  padding-inline: 0;
+  padding-block: 0;
+}
+
+/* The centered "canvas" with the single outer border (the one you want). */
+.kpk-canvas {
+  min-height: 100vh;
+  width: min(100%, var(--canvas-max));
+  margin-inline: auto;
+  background: var(--bg);
+  border-left: 1px solid var(--grid-line);
+  border-right: 1px solid var(--grid-line);
+  position: relative;
+  isolation: isolate;
+  overflow: visible; /* allow sticky header */
+}
+
+/* Keep content above the grid overlay */
+/* Alles über dem Grid – aber OHNE header zu überschreiben */
+.kpk-canvas > :not(header) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Header bleibt sticky und liegt über allem */
+.kpk-canvas > header {
+  z-index: 50;
+}
+
+/* Column grid overlay (vertical lines only)
+   ✅ includes the LEFT + RIGHT inner edge lines (your red marked line). */
+.kpk-canvas::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  /* Draw only vertical column lines, plus left/right inner edge lines. */
+  padding-inline: var(--grid-margin);
+  background-origin: content-box;
+  background-clip: content-box;
+
+  --step: calc(100% / var(--grid-cols));
+
+  background-image:
+    /* left inner edge */
+    linear-gradient(to right, var(--grid-line-edge) 0 1px, transparent 1px),
+    /* inner column boundaries */
+    repeating-linear-gradient(
+      to right,
+      transparent 0,
+      transparent calc(var(--step) - 1px),
+      var(--grid-line) calc(var(--step) - 1px),
+      var(--grid-line) var(--step)
+    ),
+    /* right inner edge */
+    linear-gradient(to left, var(--grid-right-edge) 0 1px, transparent 1px);
+
+  background-repeat: no-repeat, repeat, no-repeat;
+  background-size: 100% 100%, 100% 100%, 100% 100%;
+}
+
+/* ----------------------------------------------------------------------------
+  Reusable pill/button styling (theme-driven)
+---------------------------------------------------------------------------- */
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-strong);
+  padding: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+.pill:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-hover);
+}
+
+.pill:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+/* -----------------------------------------
+   Primary CTA (Recruiter Quick View)
+------------------------------------------ */
+
+@layer utilities {
+  .pill-primary{
+    background: var(--accent-primary, var(--accent)) !important;
+    color: var(--accent-primary-text, #fff) !important;
+    border-color: transparent !important;
+    box-shadow: 0 10px 26px rgba(0,0,0,0.12);
+  }
+
+  .pill-primary:hover {
+    filter: brightness(0.96);
+    transform: translateY(-1px);
+  }
+
+  .pill-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.10);
+  }
+
+  .pill-primary:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px var(--ring),
+      0 10px 26px rgba(0, 0, 0, 0.12);
+  }
+}
+
+
+.theme-toggle {
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+}
+
+/* ----------------------------------------------------------------------------
+  Section title (word + underline BELOW)
+---------------------------------------------------------------------------- */
+
+.kpk-section-title {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--border);
+}
+
+:root {
+  --page-grid-line: rgba(0, 0, 0, 0.035);
+  --page-grid-size: 22px;
+  --grid-right-edge: var(--grid-line-edge);
+}
+
+.dark {
+  --grid-line: rgba(255, 255, 255, 0.04);
+}
+
+.bg-page-grid {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+  background-position: top center;
+}
+
+
+/* ----------------------------------------------------------------------------
+  Tabs: hover underline wipe (CSS-based, reliable)
+---------------------------------------------------------------------------- */
+
+.kpk-tab {
+  position: relative;
+}
+
+/* Hover underline (inactive tabs): wipe in from left + subtle fade */
+.kpk-tab::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  border-radius: 9999px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  opacity: 0;
+  transition:
+    transform 180ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 180ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+/* Only show on hover/focus for inactive tabs */
+.kpk-tab:hover::after,
+.kpk-tab:focus-visible::after {
+  transform: scaleX(1);
+  opacity: 0.55;
+}
+
+/* Active tab uses the Framer underline, so disable the CSS underline */
+.kpk-tab-active::after {
+  display: none;
+}
+
+/*Bilder Case Studies */
+.case-image-wrap {
+  position: relative;
+  background: var(--case-bg);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow:
+    0 0 0 1px var(--border),
+    0 12px 30px rgba(0, 0, 0, 0.04);
+}
+
+/* Bild selbst */
+.case-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  background: transparent;
+}
+
+.object-cover {
+  background-color: var(--surface);
+}
+
+/* Default = Light */
+.lighting { display: block; }
+.darking  { display: none; }
+
+/* Dark Mode */
+html.dark .lighting { display: none; }
+html.dark .darking  { display: block; }

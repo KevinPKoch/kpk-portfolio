@@ -1,0 +1,51 @@
+html.dark {
+  /* Brand accent (used for links + tab underline hover) */
+  --accent:#e5e7eb;
+  /* Hover underline color for inactive tabs */
+  --underline:rgba(229,231,235,0.35);
+  --bg:#000000;
+  --surface: rgb(18 18 20);
+  --surface-muted: rgb(14 14 16);
+  --surface-hover:#0b0b0c;
+  --surface-subtle: rgb(18 18 20);
+
+  --border:rgba(255,255,255,0.12);
+  --gold:#F5B971 !important;
+  --border-hover:rgba(255,255,255,0.20);
+
+  --text-strong:#f9fafb;
+  --text:#d1d5db;
+  --text-circle:#111827;
+  --text-muted:#9ca3af;
+  --text-dim:#9ca3af;
+  --text-faint:#9ca3af;
+
+  --bullet:rgba(255,255,255,0.22);
+
+  --header-bg:rgba(0,0,0,0.70);
+  --ring:#F5B971;
+  --overlay:rgba(0,0,0,0.40);
+
+  --grad-from:rgba(255,255,255,0.05);
+  --grad-to:rgba(255,255,255,0.10);
+
+  --pill-bg: rgb(18 18 20);
+  --pill-border:rgba(255,255,255,0.12);
+
+  --accent-primary: #F5B971;
+  --accent-primary-text: #000000;
+
+  /* Grid line colors */
+  --grid-line: rgba(255, 255, 255, 0.10);
+  --grid-line-edge: rgba(255, 255, 255, 0.10);
+
+  --case-bg: rgb(18 18 20);
+--grid-right-edge: rgba(255, 255, 255, 0.01) !important;
+
+}
+
+html.dark .bg-gray-50,
+html.dark .hover\:bg-gray-50:hover {
+  background-color: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(2px);
+}
