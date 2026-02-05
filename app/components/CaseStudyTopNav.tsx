@@ -108,6 +108,7 @@ export default function CaseStudyTopNav({
   onToggleTheme: () => void;
 }) {
   const [scrolled, setScrolled] = useState(false);
+  const [isCompact, setIsCompact] = useState(false);
 
   // Brand hover/focus state
   const [brandActive, setBrandActive] = useState(false);
@@ -118,6 +119,20 @@ export default function CaseStudyTopNav({
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 420px)");
+    const update = () => setIsCompact(mq.matches);
+    update();
+
+    if (typeof mq.addEventListener === "function") mq.addEventListener("change", update);
+    else mq.addListener(update);
+
+    return () => {
+      if (typeof mq.removeEventListener === "function") mq.removeEventListener("change", update);
+      else mq.removeListener(update);
+    };
   }, []);
 
   return (
@@ -134,9 +149,9 @@ export default function CaseStudyTopNav({
         {/* KPK BrandMark (replaces Back link) */}
         <Link
           href="/#work"
-          onMouseEnter={() => setBrandActive(true)}
+          onMouseEnter={() => !isCompact && setBrandActive(true)}
           onMouseLeave={() => setBrandActive(false)}
-          onFocus={() => setBrandActive(true)}
+          onFocus={() => !isCompact && setBrandActive(true)}
           onBlur={() => setBrandActive(false)}
           className={cx(
             "whitespace-nowrap select-none text-sm font-semibold tracking-tight text-(--text-strong) sm:text-base",
@@ -147,7 +162,7 @@ export default function CaseStudyTopNav({
           title={BRAND_FULL}
         >
           <motion.span className="inline-block" initial={false} animate={{ opacity: 1 }} transition={{ duration: 0.12 }}>
-            {brandActive ? brandDisplay : BRAND_SHORT}
+            {!isCompact && brandActive ? brandDisplay : BRAND_SHORT}
           </motion.span>
         </Link>
 

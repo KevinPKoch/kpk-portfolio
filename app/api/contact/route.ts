@@ -82,7 +82,8 @@ export async function POST(req: Request) {
 
     // Optional: set this in Vercel once your domain is verified in Resend
     // e.g. "Kevin Koch <hello@kevinpkoch.com>"
-    const CONTACT_FROM = process.env.CONTACT_FROM || "Portfolio Contact <onboarding@resend.dev>";
+    const CONTACT_FROM = process.env.CONTACT_FROM || "Portfolio Contact <hello@kevinpkoch.com>";
+
 
     if (!RESEND_API_KEY) {
       return Response.json(
@@ -109,16 +110,11 @@ export async function POST(req: Request) {
       }),
     });
 
-    if (!r.ok) {
-      const errText = await r.text().catch(() => "");
-      return Response.json(
-        {
-          error: "Email send failed",
-          detail: errText.slice(0, 600),
-        },
-        { status: 500 }
-      );
-    }
+if (!r.ok) {
+  const err = await r.json().catch(async () => ({ raw: await r.text().catch(() => "") }));
+  return Response.json({ error: "Email send failed", detail: err }, { status: 500 });
+}
+
 
     return Response.json({ ok: true });
   } catch (e) {

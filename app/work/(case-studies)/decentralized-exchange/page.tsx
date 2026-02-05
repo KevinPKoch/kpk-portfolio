@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     "Case study of a decentralized derivatives exchange. Focus on UX/UI design, design systems, and performance-driven frontend development for high-frequency trading environments.",
 
   openGraph: {
-    title: "Decentralized Exchange — UX/UI Case Study",
+    title: "Decentralized Exchange - UX/UI Case Study",
     description:
       "A deep dive into the design and development of a decentralized derivatives trading platform, focusing on clarity, performance, and scalable UX systems.",
     type: "article",

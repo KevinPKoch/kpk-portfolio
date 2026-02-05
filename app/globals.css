@@ -167,6 +167,13 @@ html.dark {
   overflow: visible; /* allow sticky header */
 }
 
+@media (max-width: 639px) {
+  .kpk-canvas {
+    overflow-x: clip;
+    overflow-y: visible;
+  }
+}
+
 /* Keep content above the grid overlay */
 /* Alles über dem Grid – aber OHNE header zu überschreiben */
 .kpk-canvas > :not(header) {
@@ -380,3 +387,14 @@ html.dark {
 /* Dark Mode */
 html.dark .lighting { display: none; }
 html.dark .darking  { display: block; }
+
+
+/* Prevent wide media from blowing out the canvas on mobile */
+img, video, canvas, svg {
+  max-width: 100%;
+}
+
+pre {
+  max-width: 100%;
+  overflow-x: auto;
+}

@@ -635,7 +635,7 @@ export default function CaseStudyClient() {
           <motion.div variants={fadeUp} initial="hidden" animate="show">
             <p className="text-sm font-semibold uppercase tracking-wider text-(--text-muted)">Case study</p>
 
-            <h1 className="mt-4 text-balance text-5xl font-extrabold tracking-tight leading-[1.15] text-(--text-strong) sm:text-6xl sm:leading-[1.15] md:text-7xl md:leading-[1.1]">
+            <h1 className="mt-4 text-balance text-4xl font-extrabold tracking-tight leading-[1.15] text-(--text-strong) sm:text-6xl sm:leading-[1.15] md:text-7xl md:leading-[1.1]">
               Helping Immigrants Find Their Way in Germany
             </h1>
 

@@ -3,7 +3,7 @@ import CaseStudyClient from "./CaseStudyClient";
 
 export const metadata: Metadata = {
   title:
-    "Jumpstart-Muc Case Study — App & Responsive Website for Refugees & Immigrants",
+    "Jumpstart-Muc Case Study - App & Responsive Website for Refugees & Immigrants",
   description:
     "Case study: designing an app and responsive website to help refugees and immigrants navigate integration in Germany, with accessibility and a volunteer support network.",
   openGraph: {

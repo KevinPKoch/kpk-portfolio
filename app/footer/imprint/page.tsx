@@ -199,7 +199,7 @@ export default function ImprintPage() {
 
       if (!res.ok) {
         setStatus('error');
-        setErrorMsg(json?.error || 'Message could not be sent. Please try again.');
+        setErrorMsg(json?.detail || json?.error || 'Message could not be sent. Please try again.');
         return;
       }
 
@@ -287,8 +287,7 @@ export default function ImprintPage() {
                     <input id="company" name="company" type="text" tabIndex={-1} autoComplete="off" />
                   </div>
 
-                  {/* Optional: reCAPTCHA token placeholder */}
-                  <input type="hidden" name="recaptcha_token" value="" />
+
 
                   <div className="grid gap-4">
                     <div>

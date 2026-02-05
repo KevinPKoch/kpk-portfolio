@@ -106,7 +106,7 @@ export default function UnlockClient({ next }: { next: string }) {
             disabled={loading}
             className={cx(
               "group inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition",
-              "bg-(--accent) text-(--bg) dark:bg-(--accent-primary) dark:text-black",
+              "bg-(--accent) text-(--bg)",
               "hover:opacity-95",
               "disabled:cursor-not-allowed disabled:opacity-60",
               "focus:outline-none focus-visible:ring-2 focus-visible:ring-black/20 dark:focus-visible:ring-white/20 focus-visible:ring-offset-4 focus-visible:ring-offset-white dark:focus-visible:ring-offset-black"

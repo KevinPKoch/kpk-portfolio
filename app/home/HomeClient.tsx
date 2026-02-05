@@ -200,12 +200,12 @@ function applyTheme(mode: ThemeMode) {
 const layout = {
   page: 'min-h-screen',
   container: 'mx-auto w-full max-w-[77rem] px-[var(--grid-margin)]',
-  hero: 'pt-[160px] pb-16',
+  hero: 'pt-[112px] sm:pt-[160px] pb-16',
 };
 
 const text = {
   /* Fluid type scales better across mobile/tablet/desktop */
-  h1: 'mb-10 text-balance font-extrabold tracking-tight text-(--text-strong) text-[clamp(3rem,7vw,7.25rem)] leading-[0.95]',
+  h1: 'mb-10 text-balance font-extrabold tracking-tight text-(--text-strong) text-[clamp(3.5rem,9vw,7.25rem)] leading-[0.95]',
   title:
     'mb-5 font-bold leading-tight text-(--text-strong) text-[clamp(1.75rem,3vw,3.25rem)]',
   body: 'text-[clamp(1rem,1.1vw,1.125rem)] leading-relaxed text-(--text-muted)',
@@ -423,7 +423,22 @@ function ThemeToggle({
 
 function BrandMark() {
   const [active, setActive] = useState<boolean>(false);
+  const [isCompact, setIsCompact] = useState(false);
   const display = useScrambleReveal(BRAND_FULL, active);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 420px)');
+    const update = () => setIsCompact(mq.matches);
+    update();
+
+    if (typeof mq.addEventListener === 'function') mq.addEventListener('change', update);
+    else mq.addListener(update);
+
+    return () => {
+      if (typeof mq.removeEventListener === 'function') mq.removeEventListener('change', update);
+      else mq.removeListener(update);
+    };
+  }, []);
 
   const scrollTopSmooth = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -434,9 +449,9 @@ function BrandMark() {
     <button
       type="button"
       onClick={scrollTopSmooth}
-      onMouseEnter={() => setActive(true)}
+      onMouseEnter={() => !isCompact && setActive(true)}
       onMouseLeave={() => setActive(false)}
-      onFocus={() => setActive(true)}
+      onFocus={() => !isCompact && setActive(true)}
       onBlur={() => setActive(false)}
       className={cx(
         'whitespace-nowrap select-none text-sm font-semibold tracking-tight text-(--text-strong) sm:text-base',
@@ -451,7 +466,7 @@ function BrandMark() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.12 }}
       >
-        {active ? display : BRAND_SHORT}
+        {!isCompact && active ? display : BRAND_SHORT}
       </motion.span>
     </button>
   );
@@ -831,7 +846,7 @@ function WorkCaseCard({ c }: { c: WorkCase }) {
             alt={c.image.alt}
             fill
             sizes="(min-width: 768px) 600px, 100vw"
-            className="object-cover"
+            className="object-contain md:object-cover"
           />
         </div>
       </div>
