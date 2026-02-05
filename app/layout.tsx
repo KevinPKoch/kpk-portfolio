@@ -1,7 +1,8 @@
 import './globals.css';
-
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
+
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata: Metadata = {
   title: 'Kevin Philipp Koch – Portfolio',
@@ -22,7 +23,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <a className="skip-link" href="#main-content">
           Skip to content
         </a>
-
+        <Analytics />
         {/* Page background outside the bordered canvas */}
         <div className="kpk-page">
           <div className="kpk-canvas">{children}</div>
