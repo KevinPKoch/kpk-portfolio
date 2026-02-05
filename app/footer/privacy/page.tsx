@@ -36,7 +36,11 @@ function applyTheme(mode: ThemeMode) {
 
 /* -------------------------- Scramble Reveal Hook ------------------------- */
 
-function useScrambleReveal(targetText: string, active: boolean, opts: ScrambleRevealOptions = {}) {
+function useScrambleReveal(
+  targetText: string,
+  active: boolean,
+  opts: ScrambleRevealOptions = {}
+) {
   const {
     stepMs = 18,
     revealPerTick = 1,
@@ -56,7 +60,9 @@ function useScrambleReveal(targetText: string, active: boolean, opts: ScrambleRe
 
     const randChar = () => charset[Math.floor(Math.random() * charset.length)];
     const buildScramble = (remaining: number) =>
-      Array.from({ length: remaining }, () => (Math.random() < spaceChance ? ' ' : randChar())).join('');
+      Array.from({ length: remaining }, () =>
+        Math.random() < spaceChance ? ' ' : randChar()
+      ).join('');
 
     const tick = () => {
       if (cancelled) return;
@@ -94,6 +100,8 @@ function cx(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(' ');
 }
 
+/* ------------------------------ Page ------------------------------ */
+
 export default function PrivacyPolicyPage() {
   const [theme, setTheme] = useState<ThemeMode>(() => getInitialTheme());
 
@@ -102,7 +110,6 @@ export default function PrivacyPolicyPage() {
     localStorage.setItem(THEME_KEY, theme);
   }, [theme]);
 
-  // Brand hover/focus state
   const [brandActive, setBrandActive] = useState(false);
   const brandDisplay = useScrambleReveal(BRAND_FULL, brandActive);
 
@@ -112,7 +119,6 @@ export default function PrivacyPolicyPage() {
         {/* Header */}
         <div className="mx-auto w-full max-w-[77rem] px-[var(--grid-margin)] pt-8">
           <div className="flex items-center justify-between">
-            {/* KPK BrandMark (replaces Back link) */}
             <Link
               href="/#work"
               onMouseEnter={() => setBrandActive(true)}
@@ -127,7 +133,12 @@ export default function PrivacyPolicyPage() {
               aria-label={BRAND_FULL}
               title={BRAND_FULL}
             >
-              <motion.span className="inline-block" initial={false} animate={{ opacity: 1 }} transition={{ duration: 0.12 }}>
+              <motion.span
+                className="inline-block"
+                initial={false}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.12 }}
+              >
                 {brandActive ? brandDisplay : BRAND_SHORT}
               </motion.span>
             </Link>
@@ -144,14 +155,17 @@ export default function PrivacyPolicyPage() {
         {/* Content */}
         <section className="mx-auto w-full max-w-[77rem] px-[var(--grid-margin)] pt-16 pb-24">
           <div className="max-w-3xl space-y-10">
-            <h1 className="text-5xl font-extrabold tracking-tight">Privacy Policy</h1>
+            <h1 className="text-5xl font-extrabold tracking-tight">
+              Privacy Policy
+            </h1>
 
             <section>
               <h2 className="text-xl font-semibold">1. General Information</h2>
-              <p className="mt-3 text-(--text)">
-                This website is a personal portfolio used to present projects and professional work.
-                Protecting your personal data is important to me.
-                This privacy policy explains what data is collected and how it is used.
+              <p className="mt-3">
+                This website is a personal portfolio used to present professional
+                work and projects. Protecting your personal data is important to
+                me. This privacy policy explains what data is collected when you
+                visit this website and how it is used.
               </p>
             </section>
 
@@ -159,8 +173,6 @@ export default function PrivacyPolicyPage() {
               <h2 className="text-xl font-semibold">2. Responsible Person</h2>
               <p className="mt-3">
                 Kevin Philipp Koch<br />
-                Garmischer Allee 15<br />
-                86438 Kissing<br />
                 Germany
               </p>
               <p className="mt-2">
@@ -174,66 +186,85 @@ export default function PrivacyPolicyPage() {
             <section>
               <h2 className="text-xl font-semibold">3. Hosting</h2>
               <p className="mt-3">
-                This website is hosted by a European hosting provider.
-                Server log files may automatically store technical information such as:
+                This website is hosted by Vercel Inc., 440 N Barranca Ave #4133,
+                Covina, CA 91723, USA. When visiting this website, technical data
+                (server log files) may be processed to ensure the secure and
+                reliable operation of the website.
               </p>
-              <ul className="mt-3 list-disc pl-6">
-                <li>IP address (anonymized)</li>
-                <li>Browser type and version</li>
-                <li>Operating system</li>
-                <li>Date and time of access</li>
-              </ul>
               <p className="mt-3">
-                This data is processed solely for technical security and stability.
-                No profiling or tracking takes place.
+                The legal basis for this processing is Art. 6(1)(f) GDPR
+                (legitimate interest in the secure and efficient provision of
+                this website).
+              </p>
+              <p className="mt-3">
+                More information:{' '}
+                <a
+                  href="https://vercel.com/legal/privacy-policy"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="underline"
+                >
+                  Vercel Privacy Policy
+                </a>
               </p>
             </section>
 
             <section>
-              <h2 className="text-xl font-semibold">4. Contact Form</h2>
+              <h2 className="text-xl font-semibold">
+                4. Web Analytics (Vercel)
+              </h2>
               <p className="mt-3">
-                If you contact me via the contact form, your submitted data (name, email, message)
-                will only be used to respond to your request.
+                This website uses Vercel Web Analytics, a cookie-less analytics
+                service provided by Vercel Inc. No cookies, user profiles, or
+                personal identifiers are used.
               </p>
-              <p className="mt-2">
-                The data will not be shared with third parties and will be deleted once the inquiry
-                has been processed.
+              <p className="mt-3">
+                The collected data is processed in an aggregated and anonymous
+                form (e.g. page views, referrer information, device type) and
+                does not allow conclusions about individual users.
+              </p>
+              <p className="mt-3">
+                The legal basis for this processing is Art. 6(1)(f) GDPR
+                (legitimate interest in analyzing and improving this website).
               </p>
             </section>
 
             <section>
-              <h2 className="text-xl font-semibold">5. Cookies & Tracking</h2>
+              <h2 className="text-xl font-semibold">5. Contact</h2>
               <p className="mt-3">
-                This website does <strong>not</strong> use cookies, analytics tools, tracking pixels,
-                or third-party advertising services.
-              </p>
-              <p className="mt-2">
-                No consent banner is required because no personal tracking occurs.
+                If you contact me by email, the information you provide will be
+                used solely to process your request. The data will not be shared
+                with third parties and will be deleted when it is no longer
+                required.
               </p>
             </section>
 
             <section>
               <h2 className="text-xl font-semibold">6. Your Rights</h2>
-              <p className="mt-3">You have the right to:</p>
-              <ul className="mt-2 list-disc pl-6">
-                <li>request information about stored personal data</li>
-                <li>request correction or deletion</li>
-                <li>withdraw consent at any time</li>
-              </ul>
-              <p className="mt-3">To exercise your rights, simply contact me via email.</p>
+              <p className="mt-3">
+                You have the right to access, rectify, or delete your personal
+                data, as well as the right to object to processing in accordance
+                with the GDPR.
+              </p>
+              <p className="mt-3">
+                To exercise your rights, please contact me via email.
+              </p>
             </section>
 
             <section>
               <h2 className="text-xl font-semibold">7. Changes</h2>
               <p className="mt-3">
-                This privacy policy may be updated if required by law or technical changes.
+                This privacy policy may be updated if required by law or due to
+                technical changes. The current version is always available on
+                this website.
               </p>
             </section>
-                              <div className="flex flex-wrap gap-3">
-                    <Link className="pill" href="/#work">
-                      ← Back to work
-                    </Link>
-                  </div>
+
+            <div className="flex flex-wrap gap-3">
+              <Link className="pill" href="/#work">
+                ← Back to work
+              </Link>
+            </div>
           </div>
         </section>
 
