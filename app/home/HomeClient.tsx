@@ -200,20 +200,23 @@ function applyTheme(mode: ThemeMode) {
 const layout = {
   page: 'min-h-screen',
   container: 'mx-auto w-full max-w-[77rem] px-[var(--grid-margin)]',
-  hero: 'pt-[112px] sm:pt-[160px] pb-16',
+  // Mobile: start the hero higher so the greeting doesn't sit too far down.
+  hero: 'pt-[40px] sm:pt-[160px] pb-14 sm:pb-16',
 };
 
 const text = {
   /* Fluid type scales better across mobile/tablet/desktop */
-  h1: 'mb-10 text-balance font-extrabold tracking-tight text-(--text-strong) text-[clamp(3.5rem,9vw,7.25rem)] leading-[0.95]',
+  // Mobile: slightly larger greeting + safer line-height to avoid clipping scripts like Hindi.
+  h1: 'mb-6 sm:mb-10 overflow-visible text-balance font-extrabold tracking-tight text-(--text-strong) text-[clamp(3.5rem,10vw,7.25rem)] leading-[1.05] sm:leading-[0.95]',
   title:
-    'mb-5 font-bold leading-tight text-(--text-strong) text-[clamp(1.75rem,3vw,3.25rem)]',
-  body: 'text-[clamp(1rem,1.1vw,1.125rem)] leading-relaxed text-(--text-muted)',
+  'mb-4 font-semibold leading-tight text-(--text-strong) text-[1.6rem] sm:text-[clamp(1.75rem,3vw,3.25rem)]',
+  body: 'text-[15px] sm:text-[clamp(0.95rem,1.1vw,1.05rem)] leading-relaxed text-(--text-muted)',
 };
 
 const tabs = {
-  wrap: 'mb-6 flex w-full flex-wrap gap-x-8 gap-y-2 text-lg',
-  btnBase: 'border-b-2 border-transparent py-1 font-medium transition',
+  // Mobile: tabs should take less vertical space and read like a compact nav.
+  wrap: 'mb-4 flex w-full flex-wrap gap-x-6 gap-y-1 text-[15px] sm:text-lg',
+  btnBase: 'border-b-2 border-transparent py-0.5 font-medium leading-tight transition',
   btnActive: 'font-semibold tracking-tight text-(--accent)',
   btnInactive: 'text-(--text-faint) hover:text-(--accent)',
 };
