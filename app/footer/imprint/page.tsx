@@ -391,11 +391,12 @@ export default function ImprintPage() {
 
               <section>
                 <h2 className="text-xl font-semibold text-(--text-strong)">Data protection</h2>
-                <p className="mt-3 text-sm text-(--text-muted)">
-                  Personal data is processed only when you contact me via email or the contact form, and only for the
-                  purpose of responding to your inquiry. No tracking, analytics, or marketing cookies are used on this
-                  website.
-                </p>
+                  <p className="mt-3 text-sm text-(--text-muted)">
+                    This website may process personal data to ensure secure operation and to respond to inquiries.
+                    No marketing or profiling cookies are used.
+                    Further details are available in the Privacy Policy.
+                  </p>
+
               </section>
                                 <div className="flex flex-wrap gap-3">
                     <Link className="pill" href="/#work">
