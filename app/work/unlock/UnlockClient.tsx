@@ -26,9 +26,9 @@ export default function UnlockClient({ next }: { next: string }) {
         </h1>
 
         <p className="mt-3 text-sm leading-relaxed text-(--text-muted)">
-          This case study contains anonymized NDA material.
+          The decentralized-exchange case study contains anonymized NDA material.
           <br />
-          Enter the password to continue.
+          Enter the CASE_PASS password to continue.
         </p>
       </div>
 

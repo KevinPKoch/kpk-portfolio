@@ -6,11 +6,8 @@ import type { NextRequest } from "next/server";
 export function proxy(req: NextRequest) {
   const { pathname, search } = req.nextUrl;
 
-  // Only protect /work/*, but allow the unlock page and API routes.
-  const isProtectedWorkRoute =
-    pathname.startsWith("/work") &&
-    !pathname.startsWith("/work/unlock") &&
-    !pathname.startsWith("/api");
+  // Protect only the decentralized-exchange case study.
+  const isProtectedWorkRoute = pathname.startsWith("/work/decentralized-exchange");
 
   if (!isProtectedWorkRoute) {
     return NextResponse.next();

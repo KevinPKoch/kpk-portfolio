@@ -500,11 +500,6 @@ export default function CalibrationSoftwareCaseStudy() {
                 </PillLink>
                 <PillLink href="#context">Start reading</PillLink>
               </div>
-
-              <div className="mt-10 max-w-3xl rounded-2xl border border-(--border) bg-(--surface) p-6">
-                <p className="text-xs font-semibold uppercase tracking-wider text-(--text-muted)">NDA note</p>
-                <p className="mt-2 text-sm leading-relaxed text-(--text)">{META.nda}</p>
-              </div>
             </motion.div>
           </section>
 
