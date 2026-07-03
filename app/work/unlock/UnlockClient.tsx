@@ -28,8 +28,38 @@ export default function UnlockClient({ next }: { next: string }) {
         <p className="mt-3 text-sm leading-relaxed text-(--text-muted)">
           The decentralized-exchange case study contains anonymized NDA material.
           <br />
-          Enter the CASE_PASS password to continue.
+          The password is included in my applications. You can also request it at{" "}
+          <a href="mailto:hello@kevinpkoch.com" className="underline underline-offset-2 hover:text-(--accent)">
+            hello@kevinpkoch.com
+          </a>
+          .
         </p>
+      </div>
+
+      {/* Public teaser */}
+      <div className="mb-8 rounded-2xl border border-(--border) bg-(--surface) p-6">
+        <p className="text-xs font-semibold uppercase tracking-wider text-(--text-faint)">
+          What&apos;s inside (public summary)
+        </p>
+        <p className="mt-3 text-sm leading-relaxed text-(--text)">
+          End-to-end delivery for a decentralized derivatives exchange: design system, mobile-first
+          wireframes and prototypes, and the production trading UI built with Next.js 13, TypeScript,
+          and Tailwind CSS.
+        </p>
+        <dl className="mt-4 grid grid-cols-3 gap-4">
+          <div>
+            <dt className="text-xs text-(--text-faint)">Mobile engagement</dt>
+            <dd className="mt-1 text-lg font-semibold text-(--text-strong)">+35&ndash;45%</dd>
+          </div>
+          <div>
+            <dt className="text-xs text-(--text-faint)">Load times</dt>
+            <dd className="mt-1 text-lg font-semibold text-(--text-strong)">&minus;50&ndash;60%</dd>
+          </div>
+          <div>
+            <dt className="text-xs text-(--text-faint)">Dev cycles</dt>
+            <dd className="mt-1 text-lg font-semibold text-(--text-strong)">&minus;30&ndash;40%</dd>
+          </div>
+        </dl>
       </div>
 
       {/* Card */}

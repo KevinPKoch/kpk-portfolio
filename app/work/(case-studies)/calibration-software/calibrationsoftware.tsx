@@ -530,6 +530,7 @@ export default function CalibrationSoftwareCaseStudy() {
                     </Callout>
 
                     <Callout title="Results">
+                      The design system accelerated feature development by roughly 70% and kept the UI consistent across all modules (documented in my reference letter).
                       Research established a shared priority list, where internal users ranked "perceived performance" as their top concern (69%, n=72). I used this to 
                       create shippable UX rules and design system patterns, such as loading states, empty states, status consistency, and progressive disclosure (only necessary 
                       information at each step to reduce cognitive load). I wrote these rules as UX acceptance criteria, making it easy for the engineering team to implement these rules across different modules.
@@ -541,9 +542,8 @@ export default function CalibrationSoftwareCaseStudy() {
                   <div className="mt-10 mx-auto max-w-3xl rounded-2xl border border-(--border) bg-(--surface) p-6">
                     <p className="text-xs font-semibold uppercase tracking-wider text-(--text-muted)">Transparency</p>
                     <p className="mt-2 text-base leading-relaxed text-(--text)">
-                      Transparency
-                      The work on the UX scope was completed, and it was handed over in an implementation-ready state.
-                      Although the product did not get to full market release due to various business reasons, it was built from the start as a system, not as a series of isolated screens. 
+                      The UX scope was completed and handed over in an implementation-ready state.
+                      The product never reached full market release for business reasons unrelated to the design work. It was built from the start as a system, not as a collection of isolated screens. 
                       <br /><br />                      
                       The core workflows, such as the process for device calibration, management of devices and other assets, and support for compliance-critical patterns, were fully designed,
                       validated, and documented. This makes it directly applicable to other regulated, high-data-volume SaaS products where scalability, auditability, and consistency are critical.
@@ -772,7 +772,7 @@ export default function CalibrationSoftwareCaseStudy() {
 
                       <ul className="mt-4 space-y-2 text-sm leading-relaxed text-(--text)">
                         <li>• Needs system transparency, consistency, and reliable reporting</li>
-                        <li>• Requires confidence in data and process compliance and audibility</li>
+                        <li>• Requires confidence in data quality, process compliance, and auditability</li>
                         <li>• Prioritizes clarity over speed, particularly in complex views</li>
                       </ul>
                     </div>
@@ -906,8 +906,8 @@ export default function CalibrationSoftwareCaseStudy() {
                     </div>
                   
                     <p className="mt-10">
-                      From the start, the product has needed a UX base that can accommodate a variety of different modules, user roles, and customer brands. Throughout the early phase of the project, 
-                      I have designed and implemented a production-ready design system within Figma, not as a series of UI screens, but as a base for the entire application.
+                      From the start, the product needed a UX base that could support a variety of modules, user roles, and customer brands. In the early phase of the project, 
+                      I designed and implemented a production-ready design system in Figma, not as a series of UI screens, but as the base layer of the entire application.
                     </p>
 
                     <p className="mt-5">
@@ -1043,7 +1043,7 @@ export default function CalibrationSoftwareCaseStudy() {
                       </div>
 
                       <p className="mt-4 text-sm leading-relaxed">
-                        This scale is used throughout padding, spacing, component sizing, and responsive design decisions, making the UI more visually consistent and easier to implement and Quality Assurance.
+                        This scale is used throughout padding, spacing, component sizing, and responsive design decisions, keeping the UI visually consistent and easy to implement and QA.
                       </p>
                     </Callout>
                   </div>
@@ -1089,8 +1089,7 @@ export default function CalibrationSoftwareCaseStudy() {
                     </p>
 
                     <p className="mt-5">
-                      The project recognized that UX is a critical part of decision-making, not just a supporting function. So, I worked closely with product management, engineering, and leadership teams 
-                      to ensure that my work was closely aligned with overall product strategy and objectives. I developed a shared workflow that I called a “source of truth.” It consisted of decision documentation 
+                      UX was treated as part of decision-making, not as a supporting function. To make that work in practice, I developed a shared workflow that I called the “source of truth.” It consisted of decision documentation 
                       using FigJam, Figma component/token development, Dev Mode, and a QA checklist. This workflow allowed us to reduce iterations since I documented my decisions as rules, not opinions.
                     </p>
                   </Prose>
@@ -1398,7 +1397,7 @@ export default function CalibrationSoftwareCaseStudy() {
                         and patterns that minimize risk in the world of compliance-driven software.
                       </p>
                       <p className="mt-3">
-                        This case shows: "system thinking," excellent UX for complex systems, "design system maturity," 
+                        This case demonstrates systems thinking, UX for complex domains, design system maturity, 
                         and the ability to "align design to engineering constraints to ship UI consistently."
                       </p>
                     </Callout>
@@ -1410,7 +1409,7 @@ export default function CalibrationSoftwareCaseStudy() {
                         <li>In regulated spaces, clarity is a safety mechanism – status and terms must be clear and unambiguous.</li>
                         <li>White-label limitations are most simply addressed at the token architecture level, rather than at the screen level.</li>
                         <li>Adoption can be facilitated by ensuring that workflows support existing mental models while introducing improved guardrails.</li>
-                        <li>Doubts were affirmed in that predictability and trust are more important than speed in adoption.</li>
+                        <li>Predictability and trust matter more than speed when it comes to adoption. The project confirmed that.</li>
                       </ul>
                     </Callout>
                   </div>

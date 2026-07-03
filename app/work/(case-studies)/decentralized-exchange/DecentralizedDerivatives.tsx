@@ -30,10 +30,10 @@ const META: Meta = {
   role: ['UX/UI Design', 'Design System', 'Wireframing', 'Prototyping', 'Frontend (Next.js 13 + Tailwind)'],
   tools: ['Figma', 'Next.js 13', 'TypeScript', 'Tailwind CSS'],
   delivered: [
-    'Design system created and implemented within the product for a unified UI.',
-    'Mobile-first wireframes and prototypes created for website, as well as trading UI.',
-    'Frontend built from scratch using Next.js 13, TypeScript, and Tailwind CSS.',
-    'SDK team collaborated with to incorporate and customize provided toolset.',
+    'Created and implemented a design system within the product for a unified UI.',
+    'Designed mobile-first wireframes and prototypes for the website and the trading UI.',
+    'Built the frontend from scratch using Next.js 13, TypeScript, and Tailwind CSS.',
+    'Collaborated with the SDK team to integrate and customize the provided toolset.',
   ],
   facts: [
     { label: 'Platform', value: 'Web + Mobile' },
@@ -44,7 +44,7 @@ const META: Meta = {
 
 const CONTEXT = {
   problem:
-    'Trading UIs are most likely to fail when there is a sense of urgency. One needs to act fast, understand risk at all times, and avoid making incorrect selections, especially for mobile devices.',
+    'Trading UIs fail exactly when urgency is highest. Users need to act fast, understand risk at all times, and avoid wrong selections, especially on mobile.',
   users: [
     'Active traders who value speed and simplicity in a volatile market',
     'Mobile users who need the full trading experience, not a lite version',

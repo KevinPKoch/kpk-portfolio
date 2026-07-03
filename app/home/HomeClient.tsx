@@ -601,7 +601,19 @@ function Header({
             rel="noreferrer"
             download
           >
-            CV
+            CV (EN)
+          </a>
+          <a
+            className={cx(
+              'font-medium text-(--text-muted) transition hover:text-(--accent)',
+              'rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-(--ring) focus-visible:ring-offset-4 focus-visible:ring-offset-(--bg)'
+            )}
+            href="/download/kevin-p-koch-cv-de.pdf"
+            target="_blank"
+            rel="noreferrer"
+            download
+          >
+            CV (DE)
           </a>
           <a
             className={linkClass('contact')}
@@ -962,7 +974,7 @@ function AboutSection() {
                 Now
               </p>
               <p className="mt-3 text-lg leading-relaxed text-(--text)">
-                Open to new opportunities from Jan 2026.
+                Open to new opportunities. Available immediately.
               </p>
               <p className="mt-2 text-sm text-(--text-faint)">
                 UX/UI · Product design · B2B SaaS · Design systems

@@ -647,7 +647,7 @@ export default function CaseStudyClient() {
 
             <MetaGrid
               items={[
-                { k: 'Client / context', v: 'Non-profit concept for focused on integration, orientation and access to local services for refugees in Munich' },
+                { k: 'Client / context', v: 'Non-profit concept focused on integration, orientation, and access to local services for refugees in Munich' },
                 { k: 'Duration', v: 'November 2022 to December 2022' },
                 { k: 'Role',
                   v: 'End-to-end UX Design process' },
@@ -951,7 +951,7 @@ export default function CaseStudyClient() {
                     <h3 className="mt-2 text-3xl font-semibold tracking-tight text-(--text-strong)">Oluchi Quansah</h3>
 
                     <p className="mt-3 max-w-3xl text-lg leading-relaxed text-(--text)">
-                      A Somali teacher in Munich who would like to make social connections and improve her language skills through relevant local activities.
+                      A Nigerian teacher in Munich who would like to make social connections and improve her language skills through relevant local activities.
                     </p>
 
                     {/* Problem statement */}
@@ -1180,7 +1180,7 @@ export default function CaseStudyClient() {
                   </p>
 
                   <p className="mt-5">
-                    he aim was not to create final screen designs but to rapidly investigate potential solutions and interaction patterns, 
+                    The aim was not to create final screen designs but to rapidly investigate potential solutions and interaction patterns, 
                     with a primary emphasis on{" "}
                     <span className="font-semibold text-(--text-strong)">
                       accessibility, simplicity, and utility.
@@ -1240,7 +1240,7 @@ export default function CaseStudyClient() {
               <Section id="digital-wireframes" eyebrow="Design" title="Digital wireframes">
               
                   <p className="text-lg leading-relaxed text-(--text) max-w-3xl">
-                    After ideating and creating paper concepts for the Jumpstart Muc app, I developed the first digital wireframes for the app. 
+                    After ideating and creating paper concepts for the Jumpstart-Muc app, I developed the first digital wireframes for the app. 
                     The aim was to create an easy-to-follow and understandable structure for integrating tasks, even for those with limited language proficiency.
                   </p>
 
@@ -1301,7 +1301,7 @@ export default function CaseStudyClient() {
                     </div>
 
                     <figcaption className="mt-3 text-sm text-(--text-muted)">
-                      A high-fidelity prototype to integrate the entire flow with post-test refinements.
+                      Low-fidelity prototype connecting the end-to-end journey for usability testing.
                     </figcaption>
                   </figure>
 
@@ -1490,7 +1490,7 @@ export default function CaseStudyClient() {
               <Section id="mockups" eyebrow="Design" title="Mockups">
                 {/* Intro */}
                 <p className="max-w-3xl text-lg leading-relaxed text-(--text)">
-                  In line with the usability study, I have made some improvements to reduce friction and make some of these major actions more visible, 
+                  In line with the usability study, I made improvements to reduce friction and make these major actions more visible, 
                   particularly at moments of high uncertainty.
                 </p>
 
